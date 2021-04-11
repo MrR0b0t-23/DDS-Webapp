@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=yes">
+    <title>Chat Bot for Dieases Prediction Model</title>
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css')}}" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/select2.min.css' )}}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/chatBot.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/timeline.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/speech-input.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/demo.css')}}">
+    <script src="{{ url_for('static',filename='js/text-voice.js')}}"></script>
+
+
+
+    <style>
+        body {
+            background-image: url('static/img/bgbg.png');
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript" src="https://code.responsivevoice.org/responsivevoice.js?key=mEjFEYge"></script>
+    <!-- Chat bot UI start -->
+
+    <div class="chat-screen show-chat">
+        <div class="chat-header">
+            <div class="chat-header-title">
+                Let's Diagnose? - We're Online
+            </div>
+            <div class="chat-header-option ">
+                <span class="dropdown custom-dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink1" style="will-change: transform;">
+                    <a class="dropdown-item" href="/feedback">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(102,203,149,1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        Report
+                    </a>
+                    <a class="dropdown-item end-chat" href="/feedback">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(102,203,149,1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-power"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                        End Diagnose
+                    </a>
+                </div>
+            </span>
+            </div>
+        </div>
+        <div class="chat-body">
+
+            <div class="chat-start">Diagnosing in Process</div>
+            <div class="chat-bubble you">Say "START" to start diagnosing process. Say "STOP" to stop diagnosing process. Say "QUIT" to exit chatbot.</div>
+            {% for i in range(length)%} {%if bot_msg[i]%}
+            <div class="chat-bubble you">{{bot_msg[i]}}</div>
+
+            {%endif%} {%if user_msg[i]%}
+            <div class="chat-bubble me">{{user_msg[i]}}</div>
+            {%endif%} {%endfor%}
+            <div class="chat-bubble you">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto;display: block;shape-rendering: auto;width: 43px;height: 20px;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                <circle cx="0" cy="44.1678" r="15" fill="#ffffff">
+                    <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.6s"></animate>
+                </circle> <circle cx="45" cy="43.0965" r="15" fill="#ffffff">
+                <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.39999999999999997s"></animate>
+            </circle> <circle cx="90" cy="52.0442" r="15" fill="#ffffff">
+                <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.19999999999999998s"></animate>
+            </circle></svg>
+            </div>
+        </div>
+        <textarea id="val" class='hide' name="val" onchange="text2voice()" onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();">{{voice_msg}}</textarea>
+        <form method="POST">
+            <div class="chat-input">
+                <input type="text" class="speech-input" name='msg' placeholder="Type here / Use Mic" name="eng-input">
+                <div class="input-action-icon">
+                    <a><button class= "btn-sent" onclick="text2voice()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button></a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="chat-bot-icon mini">
+
+    </div>
+    <!-- Chat Bot UI Ends -->
+    <!--voice function-->
+
+    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+    <script src="{{ url_for('static',filename='js/jquery-3.1.1.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='js/popper.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='js/select2.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='js/speech-input.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            text2voice();
+        });
+
+        function text2voice() {
+            var text = document.getElementById("val").value;
+            responsiveVoice.setDefaultVoice("Hindi Female", {
+                rate: 0.9
+            }, {
+                pitch: 2
+            });
+            responsiveVoice.speak(text);
+        };
+    </script>
+
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script>
+        $(document).ready(function() {
+            $(".select2_el").select2({});
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            //Toggle fullscreen
+            $(".chat-bot-icon").click(function(e) {
+                $(this).children('img').toggleClass('hide');
+                $(this).children('svg').toggleClass('animate');
+                $('.chat-bot-icon').toggleClass('mini');
+                $('.chat-screen').toggleClass('show-chat');
+
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
